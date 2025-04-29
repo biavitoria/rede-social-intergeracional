@@ -24,11 +24,6 @@ exports.createGroup = async (req, res) => {
       return res.status(400).json({ message: 'Digite o nome do grupo.' });
     }
 
-    // Verificando o tamanho do nome
-    if (description.length < 5) {
-      return res.status(400).json({ message: 'O nome deve ter no mínimo 5 caracteres.' });
-    }
-
     if (!description) {
       return res.status(400).json({ message: 'Escreva uma breve descrição do grupo.' });
     }
@@ -111,7 +106,8 @@ exports.getGroupById = async (req, res) => {
 
     if (!group) return res.status(404).json({ message: "Grupo não encontrado" });
 
-    const isMember = group.members.some(member => member._id.toString() === req.user._id.toString());
+    // Correção: utilizando req.user.id
+    const isMember = group.members.some(member => member._id.toString() === req.user.id.toString());
 
     res.status(200).json({
       ...group.toObject(),
