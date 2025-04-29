@@ -1,9 +1,10 @@
 import { Link, useNavigate, useLocation} from "react-router-dom";
 import { PiUsersFourLight } from "react-icons/pi";
 import { 
-    BiHome, BiUser, BiUserVoice, BiMessageRounded, 
-    BiCog, BiHelpCircle, BiExit
+    BiHome, BiUser, BiUserVoice, BiMessageRounded, BiExit
 } from "react-icons/bi";
+
+// import { BiCog, BiHelpCircle } from "react-icons/bi";
 
 const Sidebar = () => {
     const navigate = useNavigate();
