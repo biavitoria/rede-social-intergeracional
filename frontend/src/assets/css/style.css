@@ -1451,6 +1451,11 @@ header h1 {
 }
 
 @media (max-width: 480px) {
+    .conversations-container {
+        max-width: 100%;
+        padding: 0px;
+    }
+
     .conversation-name {
         font-weight: 600;
         color: #111;
