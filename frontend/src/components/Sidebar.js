@@ -34,10 +34,10 @@ const Sidebar = () => {
                 <li className={location.pathname === "/grupos" ? "active" : ""}>
                     <Link to="/grupos"><PiUsersFourLight/>Grupos</Link>
                 </li>
-                /*
+                {/*
                 <li><Link to=""><BiCog/>Configurações</Link></li>
                 <li><Link to=""><BiHelpCircle/>Ajuda</Link></li>
-                */
+                */}
                 <li><Link to="/" onClick={handleLogout}><BiExit/>Sair</Link></li>
             </ul>
         </div>
