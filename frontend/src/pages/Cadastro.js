@@ -37,7 +37,7 @@ const Cadastro = () => {
     } catch (error) {
       console.error('Erro ao fazer o cadastro', error);
       if (error.response && error.response.data && error.response.data.message) {
-        setErrorMessage(errorMessage);
+        setErrorMessage(error.response.data.message);
       } else {
         setErrorMessage('Erro desconhecido. Tente novamente.');
       }
