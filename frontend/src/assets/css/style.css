@@ -863,9 +863,21 @@ header h1 {
 @media only screen and (max-width: 600px) {
     .profile-container {
         display: grid;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 1000px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+
+    .profile-info {
+        padding-left: 0;
+        padding-top: 20px;
+        text-align: justify;
     }
     
     .perfil-preview {
+      min-width: unset;
       width: 74%;
       height: 100%;
       margin: 10px auto;
@@ -923,8 +935,68 @@ header h1 {
 }
 
 @media (max-width: 480px) {
+    .profile-container {
+        max-width: 100%;
+        padding: 10px;
+        flex-direction: column;
+    }
+    
+    .interesses-container {
+        max-width: 100%;
+        margin: -5px;
+        padding: 0px;
+    }
+
     .edit-button svg{
         display: none;
+    }
+
+    .container-interesses-title {
+        text-align: center;
+    }
+
+    .box-interesses {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    .box-interesses .tags {
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        font-size: 14px;
+        max-width: fit-content;
+    }
+
+    .remove-tag {
+        margin-left: 8px;
+        border: none;
+        color: #8a8aff;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    .input-button-interesses {
+        width: 95%;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .input-interest,
+    .btn-add-interest {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        box-sizing: border-box;
     }
 }
 
