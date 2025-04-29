@@ -17,6 +17,7 @@ const Home = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
           */}
             <ul className="navbar-nav ms-auto">
+<<<<<<< HEAD
                {/*
               <li className="nav-item">
                 <Link className="nav-link" to="/">Início</Link>
@@ -24,6 +25,14 @@ const Home = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/sobre">Sobre</Link>
               </li>
+=======
+              {/* <li className="nav-item"> 
+                 <Link className="nav-link" to="/">Início</Link>
+              // </li>
+              // <li className="nav-item">
+              //   <Link className="nav-link" to="/sobre">Sobre</Link>
+              // </li>
+>>>>>>> 898fea158648e8b0509279454e562b27769dea03
               */}
               <li className="nav-item">
                 <Link className="nav-item btn btn-entrar px-4" to="/login">Entrar</Link>

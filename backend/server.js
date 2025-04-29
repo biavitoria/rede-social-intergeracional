@@ -12,7 +12,11 @@ const app = express();
 // Middleware
 const allowedOrigins = [
   'http://localhost:3000',
+<<<<<<< HEAD
   'https://conectavidas.render.com'
+=======
+  'https://conectavidas.onrender.com'
+>>>>>>> 898fea158648e8b0509279454e562b27769dea03
 ];
 
 app.use(cors({
