@@ -10,22 +10,26 @@ const Home = () => {
       <nav className="navbar navbar-expand-lg shadow-sm">
         <div className="container">
           <Link to="/" className="navbar-brand">ConectaVidas</Link>
+          {/*
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
+          */}
             <ul className="navbar-nav ms-auto">
+               {/*
               <li className="nav-item">
                 <Link className="nav-link" to="/">Início</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/sobre">Sobre</Link>
               </li>
+              */}
               <li className="nav-item">
                 <Link className="nav-item btn btn-entrar px-4" to="/login">Entrar</Link>
               </li>
             </ul>
-          </div>
+          {/*</nav></div>*/}
         </div>
       </nav>
 
