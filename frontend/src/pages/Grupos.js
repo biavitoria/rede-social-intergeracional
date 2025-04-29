@@ -12,6 +12,7 @@ const Group = () => {
   useDocumentTitle("ConectaVidas - Grupos");
   const [groups, setGroups] = useState([]); // Todos os grupos
   const [userGroups, setUserGroups] = useState([]); // Grupos que o usuário é membro
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [previewImage, setPreviewImage] = useState(null);
   const [visibleGroups, setVisibleGroups] = useState(4); // Inicialmente mostra 4 grupos
@@ -52,6 +53,8 @@ const Group = () => {
   }, [token, navigate]);
 
   const handleCreateGroup = async () => {
+    if (loading) return; // Evita múltiplos envios
+
     if (newGroup.image) {
       const file = newGroup.image;
       const fileType = file.type;
@@ -68,6 +71,8 @@ const Group = () => {
         return; // Impede o envio do formulário
       }
     }
+
+    setLoading(true); // Inicia o carregamento
 
     try {
       const token = sessionStorage.getItem('token');
@@ -100,6 +105,8 @@ const Group = () => {
         setErrorMessage('Erro desconhecido. Tente novamente.');
         Swal.fire("Erro", error.response?.data?.message || "Erro ao criar grupo", "error");
       }
+    } finally {
+      setLoading(false); // Finaliza o carregamento
     }
   };
 
@@ -265,8 +272,9 @@ const Group = () => {
                       <button
                         className="btn btn-primary"
                         onClick={handleCreateGroup}
+                        disabled={loading}
                       >
-                        Criar
+                        {loading ? "Criando..." : "Criar"}
                       </button>
                     </div>
                   </div>
