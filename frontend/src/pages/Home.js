@@ -15,14 +15,12 @@ const Home = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
-              {/*
-              <li className="nav-item">
-                <Link className="nav-link" to="/">Início</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/sobre">Sobre</Link>
-              </li>
-              */}
+              {/* <li className="nav-item"> */}
+              //   <Link className="nav-link" to="/">Início</Link>
+              // </li>
+              // <li className="nav-item">
+              //   <Link className="nav-link" to="/sobre">Sobre</Link>
+              // </li>
               <li className="nav-item">
                 <Link className="nav-item btn btn-entrar px-4" to="/login">Entrar</Link>
               </li>
