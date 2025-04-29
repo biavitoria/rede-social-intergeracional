@@ -256,7 +256,7 @@ const GrupoDetalhado = () => {
                     className="btn btn-primary btn-sm mb-2"
                     onClick={() => handleCurtir(post._id)}
                   >
-                    Curtir (25)
+                    Curtir ({post.likes?.length || 0})
                   </button>
 
                   <button
