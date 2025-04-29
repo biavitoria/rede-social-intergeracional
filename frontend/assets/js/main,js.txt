@@ -1,0 +1,4 @@
+// Animações e interatividade adicionais podem ser adicionadas aqui.
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Conexão Viva - Site carregado com sucesso!");
+});
