@@ -64,7 +64,14 @@ const Cadastro = () => {
                             name="nome"
                             placeholder="Digite seu nome"
                             value={nome}
-                            onChange={(e) => setNome(e.target.value)}
+                            onChange={(e) => {
+                                const valor = e.target.value;
+                                const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]*$/; // Permite letras e espaços (inclusive acentos)
+                              
+                                if (regex.test(valor)) {
+                                  setNome(valor);
+                                }
+                            }}
                             required
                         />
                     </div>
