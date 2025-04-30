@@ -18,7 +18,10 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar-header">
-            <h2>ConectaVidas</h2>
+            <div className="sidebar-header d-flex align-items-center gap-2">
+                <img src="/img/favicon-white.png" alt="Logo" style={{ width: "30px", height: "30px" }} />
+                <h2 style={{ margin: 0 }}>ConectaVidas</h2>
+            </div>
             <ul className="sidebar-menu">
                 <li className={location.pathname === "/dashboard" ? "active" : ""}>
                     <Link to="/dashboard"><BiHome/>Início</Link>
