@@ -9,7 +9,15 @@ const Home = () => {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg shadow-sm">
         <div className="container">
-          <Link to="/" className="navbar-brand">ConectaVidas</Link>
+        <div className="navbar-brand d-flex align-items-center">
+            {/* Logo */}
+            <img src="/favicon.png" alt="Logo" width="40" height="40" className="me-2" />
+            <span
+              style={{ color: "#6C63FF", textDecoration: "none" }}
+            >
+              ConectaVidas
+            </span>
+          </div>
           {/*
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
