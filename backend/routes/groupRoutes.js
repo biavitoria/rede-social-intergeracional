@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { upload } = require('../config/cloudinary');
+const uploadGroup = require("../middleware/uploadGroup");
 const groupController = require('../controllers/groupController');
 const authMiddleware = require('../middleware/auth');
 
 // Rota para criar um grupo
-router.post("/create", authMiddleware, upload.single('image'), groupController.createGroup);
+router.post("/create", authMiddleware, uploadGroup.single('image'), groupController.createGroup);
 
 // Rota para listar os grupos
 router.get("/all", authMiddleware, groupController.getGroups);

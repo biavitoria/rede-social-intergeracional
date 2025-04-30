@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { upload } = require('../config/cloudinary');
+const uploadProfile = require("../middleware/uploadProfile");
 const path = require('path');
 const authMiddleware = require('../middleware/auth'); // Importa o middleware de autenticação
 const userController = require('../controllers/userController');
@@ -18,7 +18,7 @@ router.put('/update', authMiddleware, userController.updateUser);
 router.delete('/delete', authMiddleware, userController.deleteUser);
 
 // Rota para atualizar imagem de perfil
-router.put('/upload-imagem-perfil', authMiddleware, upload.single('profileImage'), userController.uploadProfileImage);
+router.put('/upload-imagem-perfil', authMiddleware, uploadProfile.single('profileImage'), userController.uploadProfileImage);
 
 // Rota para atualizar interesses
 router.put('/interesses', authMiddleware, userController.updateInteresses);
