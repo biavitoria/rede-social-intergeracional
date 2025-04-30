@@ -311,18 +311,22 @@ const Group = () => {
           <h2 className='group-title mt-5'>Grupos Disponíveis</h2>
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
             {availableGroups.slice(0, visibleGroups).map(group => (
-              <Link to={`/grupo/${group._id}`} className="text-decoration-none text-reset d-flex">
               <div className="col" key={group._id}>
-                <div className="card group-card-info shadow-sm">
-                  <img src={group.image || "/img/imageGroup.png"} className="card-img-top" alt="Imagem do grupo" />
-                  <div className="card-body">
-                    <h5 className="card-title">{group.name}</h5>
-                    <p className="card-text">{group.description}</p>
-                    <button className="btn btn-outline-primary w-100" onClick={() => handleJoinGroup(group._id)}>Participar</button>
+                <div className="card group-card-info shadow-sm h-100 d-flex flex-column">
+                  <Link to={`/grupo/${group._id}`} className="text-decoration-none text-reset flex-grow-1">
+                    <img src={group.image || "/img/imageGroup.png"} className="card-img-top" alt="Imagem do grupo" />
+                    <div className="card-body">
+                      <h5 className="card-title">{group.name}</h5>
+                      <p className="card-text">{group.description}</p>
+                    </div>
+                  </Link>
+                  <div className="card-footer bg-white border-top-0">
+                    <button className="btn btn-outline-primary w-100" onClick={() => handleJoinGroup(group._id)}>
+                      Participar
+                    </button>
                   </div>
                 </div>
               </div>
-              </Link>
             ))}
           </div>
 
