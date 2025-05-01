@@ -245,6 +245,7 @@ const GrupoDetalhado = () => {
                       className="rounded-circle me-2"
                       width="40"
                       height="40"
+                      style={{ objectFit: 'cover' }}
                       />
                       <strong>{post.author.name}</strong>
                   </div>
@@ -284,6 +285,7 @@ const GrupoDetalhado = () => {
                               className="rounded-circle me-2"
                               width="30"
                               height="30"
+                              style={{ objectFit: 'cover' }}
                             />
                             <strong>{comment.user.name}</strong>
                           </div>
@@ -301,6 +303,7 @@ const GrupoDetalhado = () => {
                                 className="rounded-circle me-2"
                                 width="30"
                                 height="30"
+                                style={{ objectFit: 'cover' }}
                               />
                               <strong>{reply.user.name}</strong>: {reply.text}
                             </div>
