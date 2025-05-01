@@ -17,6 +17,15 @@ const Cadastro = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    Swal.fire({
+        title: 'Cadastrando...',
+        text: 'Aguarde um momento',
+        allowOutsideClick: false,
+        didOpen: () => {
+        Swal.showLoading();
+        }
+    });
+
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/users/register`, {
         name: nome,
@@ -33,8 +42,12 @@ const Cadastro = () => {
       });
   
       // Redirecionar ou exibir sucesso
-      navigate('/login');
+      setTimeout(() => {
+        navigate('/login');
+      }, 1500);
+
     } catch (error) {
+      Swal.close();
       console.error('Erro ao fazer o cadastro', error);
       if (error.response && error.response.data && error.response.data.message) {
         setErrorMessage(error.response.data.message);

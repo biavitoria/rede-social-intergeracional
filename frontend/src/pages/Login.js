@@ -14,6 +14,16 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Evita recarregar a página
 
+    // Mostra o alerta de carregamento
+    Swal.fire({
+      title: 'Entrando...',
+      text: 'Aguarde um momento',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, { 
         email, 
@@ -47,6 +57,7 @@ const Login = () => {
         navigate('/dashboard');
       }
     } catch (error) {
+      Swal.close(); // Fecha o loading se der erro
       console.error('Erro ao fazer o login', error);
       if (error.response && error.response.data && error.response.data.message) {
         setErrorMessage(error.response.data.message);
