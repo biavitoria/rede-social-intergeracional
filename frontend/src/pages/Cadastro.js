@@ -12,49 +12,55 @@ const Cadastro = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
     Swal.fire({
         title: 'Cadastrando...',
         text: 'Aguarde um momento',
         allowOutsideClick: false,
         didOpen: () => {
-        Swal.showLoading();
+            Swal.showLoading();
         }
     });
 
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/users/register`, {
-        name: nome,
-        email: email,
-        password: password,
-        dataNascimento: dataNascimento,
-      });
+    // Pequeno delay para garantir que o alerta apareça antes da requisição
+    setTimeout(async () => {
+        try {
+            await axios.post(`${process.env.REACT_APP_API_URL}/users/register`, {
+                name: nome,
+                email: email,
+                password: password,
+                dataNascimento: dataNascimento,
+            });
 
-      // Mensagem de sucesso
-      Swal.fire({
-        title: "Cadastro realizado com sucesso!",
-        text: "Faça o login para continuar!",
-        icon: "success"
-      });
-  
-      // Redirecionar ou exibir sucesso
-      setTimeout(() => {
-        navigate('/login');
-      }, 1500);
+            // Mensagem de sucesso
+            Swal.fire({
+                title: "Cadastro realizado com sucesso!",
+                text: "Faça o login para continuar!",
+                icon: "success"
+            });
+        
+            // Redirecionar ou exibir sucesso
+            setTimeout(() => {
+                navigate('/login');
+            }, 1500);
 
-    } catch (error) {
-      Swal.close();
-      console.error('Erro ao fazer o cadastro', error);
-      if (error.response && error.response.data && error.response.data.message) {
-        setErrorMessage(error.response.data.message);
-      } else {
-        setErrorMessage('Erro desconhecido. Tente novamente.');
-      }
-    }
+            } catch (error) {
+            Swal.close();
+            console.error('Erro ao fazer o cadastro', error);
+            setIsSubmitting(false);
+            if (error.response && error.response.data && error.response.data.message) {
+                setErrorMessage(error.response.data.message);
+            } else {
+                setErrorMessage('Erro desconhecido. Tente novamente.');
+            }
+        }
+    }, 100);
   };
 
     return (
@@ -133,8 +139,15 @@ const Cadastro = () => {
                         />
                     </div>
                     <div className="d-grid">
-                        <button type="submit" className="btn btn-entrar w-100">
-                            Cadastrar
+                        <button type="submit" className="btn btn-entrar w-100 d-flex justify-content-center align-items-center" disabled={isSubmitting}>
+                            {isSubmitting ? (
+                                <>
+                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                Cadastrando...
+                                </>
+                            ) : (
+                                "Cadastrar"
+                            )}
                         </button>
                     </div>
                     <div className="text-center mt-3">

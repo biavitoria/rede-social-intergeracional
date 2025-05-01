@@ -10,9 +10,11 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Evita recarregar a página
+    setIsSubmitting(true);
 
     // Mostra o alerta de carregamento
     Swal.fire({
@@ -58,8 +60,9 @@ const Login = () => {
       }
     } catch (error) {
       Swal.close(); // Fecha o loading se der erro
+      setIsSubmitting(false);
       console.error('Erro ao fazer o login', error);
-      if (error.response && error.response.data && error.response.data.message) {
+      if (error.response?.data?.message) {
         setErrorMessage(error.response.data.message);
       } else {
           setErrorMessage('Erro desconhecido. Tente novamente.');
@@ -98,7 +101,16 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-login-entrar w-100">Entrar</button>
+          <button type="submit" className="btn btn-login-entrar w-100 d-flex justify-content-center align-items-center" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Entrando...
+              </>
+            ) : (
+              "Entrar"
+            )}
+          </button>
         </form>
         <p className="text-muted text-center mt-3">
           Não tem uma conta? <a href="/cadastro">Cadastre-se</a>
