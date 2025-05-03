@@ -329,7 +329,7 @@ const Profile = () => {
                 <div className="input-button-interesses">
                   <input
                     type="text"
-                    placeholder="Digite um interesse..."
+                    placeholder="Digite um interesse. Exemplo: 'Jardinagem'"
                     value={newInterest}
                     onChange={e => {
                       const onlyLetters = e.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '');
