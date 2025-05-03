@@ -46,7 +46,7 @@ const Home = () => {
         <div className="container text-center">
           <h1 className="display-4 text-light">Bem-vindo à ConectaVidas</h1>
           <p className="lead text-light">Uma plataforma para criar conexões verdadeiras e significativas.</p>
-          <Link to="/cadastro" className="btn btn-gradiente mt-3">Junte-se a nós</Link>
+          <Link to="/cadastro" className="btn btn-gradiente mt-3">Cadastre-se aqui</Link>
         </div>
       </header>
 
