@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import useDocumentTitle from "../utils/useDocumentTitle";
@@ -11,9 +11,20 @@ const Cadastro = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [dia, setDia] = useState('');
+  const [mes, setMes] = useState('');
+  const [ano, setAno] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Atualiza dataNascimento automaticamente
+  useEffect(() => {
+    if (dia && mes && ano) {
+      const data = `${ano}-${mes}-${dia}`;
+      setDataNascimento(data); // Atualiza o que vai pro back-end
+    }
+  }, [dia, mes, ano]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -95,19 +106,54 @@ const Cadastro = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="number" className="form-label">
-                            Data de Nascimento
-                        </label>
-                        <input
-                            type="date"
-                            className="form-control"
-                            id="dataNascimento"
-                            name="dataNascimento"
-                            value={dataNascimento}
-                            onChange={(e) => setDataNascimento(e.target.value)}
-                            required
-                        />
-                    </div>
+  <label className="form-label">Data de Nascimento</label>
+  <div className="d-flex gap-2">
+    <select
+      className="form-select"
+      value={dia}
+      onChange={(e) => setDia(e.target.value)}
+      required
+    >
+      <option value="">Dia</option>
+      {[...Array(31)].map((_, i) => (
+        <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
+          {i + 1}
+        </option>
+      ))}
+    </select>
+
+    <select
+      className="form-select"
+      value={mes}
+      onChange={(e) => setMes(e.target.value)}
+      required
+    >
+      <option value="">Mês</option>
+      {[
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ].map((nome, i) => (
+        <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
+          {nome}
+        </option>
+      ))}
+    </select>
+
+    <select
+      className="form-select"
+      value={ano}
+      onChange={(e) => setAno(e.target.value)}
+      required
+    >
+      <option value="">Ano</option>
+      {Array.from({ length: 100 }, (_, i) => {
+        const anoAtual = new Date().getFullYear();
+        const anoItem = anoAtual - i;
+        return <option key={anoItem} value={anoItem}>{anoItem}</option>;
+      })}
+    </select>
+  </div>
+</div>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">
                             Email
