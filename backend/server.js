@@ -96,6 +96,15 @@ io.on('connection', (socket) => {
   });
 });
 
+// Rota raiz simples (útil para checar no navegador)
+app.get('/', (req, res) => {
+  res.send('Backend do ConectaVidas está ativo ✅');
+});
+
+// Rota /health para keepalive
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 5000;
