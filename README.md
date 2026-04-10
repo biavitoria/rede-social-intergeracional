@@ -174,7 +174,7 @@ A aplicação estará disponível em **http://localhost:3000**
 
 ## 📄 Pesquisa e TCC
 O projeto também está respaldado por pesquisa acadêmica e TCC.  
-Você pode acessar o documento do TCC aqui: [Download TCC](https://drive.google.com/file/d/1eb_cxwulfunqjG1O-86nnWqXbhK1v8CW/view?usp=drive_link)  
+Você pode acessar o documento do TCC aqui: [TCC](https://bib.pucminas.br/acervo/568454)  
 Além disso, diagramas e fluxogramas detalham a arquitetura do sistema.
 
 
@@ -183,7 +183,7 @@ Além disso, diagramas e fluxogramas detalham a arquitetura do sistema.
 
 ## 📝 Documentação da API
 A API está documentada no **Postman**: endpoints de usuários, posts, comentários e grupos.  
-Acesse a documentação aqui: [Link do Postman](https://documenter.getpostman.com/view/43028276/2sB3Wjz4Ca)]
+Acesse a documentação aqui: [Link do Postman](https://documenter.getpostman.com/view/43028276/2sB3Wjz4Ca)
 
 
 ---
